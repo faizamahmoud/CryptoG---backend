@@ -1,10 +1,14 @@
 const express = require('express');
 const app = express();
+require('dotenv').config()
+require('./config/db.connection')
+
 const PORT = process.env.PORT || 4000;
 const cors = require('cors');
 const morgan = require('morgan');
 const helmet = require('helmet'); // a security best practice - look into middleware options
 const cookieParser = require('cookie-parser'); // auth
+
 
 
 // middleware
@@ -22,3 +26,5 @@ app.get('/', function(req, res){
 
  // turn on the server listener
  app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
+
+
