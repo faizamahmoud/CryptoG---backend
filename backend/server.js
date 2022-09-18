@@ -9,23 +9,24 @@ const cors = require('cors');
 const morgan = require('morgan');
 const helmet = require('helmet'); // a security best practice - look into middleware options
 const cookieParser = require('cookie-parser'); // auth
-const oneDay = 1000 * 60 * 60 * 24;
-const myusername = 'user1'
-const mypassword = 'mypassword'
+// const oneDay = 1000 * 60 * 60 * 24;
 
 
+
+// * Controllers
 const coinsController = require('./controllers/coins_controller')
 
+
+// * Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(__dirname));
 app.use(cookieParser());
-// middleware
-/* SECTION App Config */
-
 app.use(cors());
 app.use(morgan('tiny'));
 app.use(helmet());
+
+app.use('/coins', coinsController)
 
 app.use(
     session({
@@ -41,7 +42,6 @@ app.use(
         },
     })
 );
-app.use('/coins', coinsController)
 
 // app.get('/', (req,res) => {
 //     console.log(req.session);
