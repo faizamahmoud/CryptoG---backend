@@ -1,12 +1,12 @@
 const express = require('express');
 const app = express();
-require('dotenv').config()
-require('./config/db.connection')
+require('dotenv').config() // .env
+
 const session = require('express-session')
 const MongoStore = require("connect-mongo");
 const PORT = process.env.PORT || 4000;
-const cors = require('cors');
-const morgan = require('morgan');
+const cors = require('cors'); // shows errors nice
+const morgan = require('morgan'); 
 const helmet = require('helmet'); // a security best practice - look into middleware options
 const cookieParser = require('cookie-parser'); // auth
 // const oneDay = 1000 * 60 * 60 * 24;

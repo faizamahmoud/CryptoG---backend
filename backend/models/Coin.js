@@ -1,11 +1,10 @@
-
-
 const mongoose = require("mongoose");
 
+
 const CoinSchema = new mongoose.Schema({
-    time: Date,
-    asset_id_quote: String,
-    rate: Number
+    time: {type: Date, default:null},
+    asset_id_quote: {type: String, default:null},
+    rate: {type: Number, default:null}
     
 },{timestamps: true});
 
