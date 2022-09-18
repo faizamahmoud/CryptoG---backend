@@ -10,7 +10,6 @@ const helmet = require('helmet'); // a security best practice - look into middle
 const cookieParser = require('cookie-parser'); // auth
 
 
-
 // middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
