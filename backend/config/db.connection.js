@@ -1,8 +1,10 @@
 const mongoose = require('mongoose');
+
+
 const {MONGODB_URI} = process.env
 
 
-console.log("Connected to: "+ MONGODB_URI)
+console.log("Connected to: "+ MONGODB_URI) 
 
 mongoose.connect(MONGODB_URI, (msg)=>console.log(`${msg}`)) //! what is this message supposed to be 
 
