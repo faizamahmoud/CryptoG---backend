@@ -1,4 +1,4 @@
-http://localhost:4040/auth/Login
+<!-- http://localhost:4040/auth/Login
 http://localhost:4040/auth/Login/profileID
 http://localhost:4040/auth/Register
 http://localhost:4040/profile/id
@@ -9,7 +9,7 @@ http://localhost:4040/markets
 http://localhost:4040/markets/trade 
 
 http://localhost:4040/about
-http://localhost:4040/privacy
+http://localhost:4040/privacy -->
 
 
 
