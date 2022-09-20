@@ -22,10 +22,10 @@ const seedingData = async () => {
               'X-CMC_PRO_API_KEY': '43665218-be9b-415f-ba98-b87571fd7356',
             }
         });
-// console.log(response.data.data)
+console.log(response.data.data[0].quote)
 const myCoins = response.data.data
 
-// const deletedCoins = await Coin.deleteMany({})
+const deletedCoins = await Coin.deleteMany({})
 const addedCoins = await Coin.insertMany(myCoins)
 console.log(addedCoins)
 
