@@ -6,27 +6,22 @@ const { User } = require("../models");
 
 
 
-
-// http://localhost:4040/auth
-// create account - POST - generate a model instance in the db -> creates a token 
-// res.status(200).json({ message: 'hitting auth route' }) - test route    
+// http://localhost:4040/auth/register - create account - POST - generate a model instance in the db -> creates a token 
 router.post("/register", async (req, res) => {
     try {
         const salt = await bcrypt.genSalt(10); // 10 (from docs) -> number of times its hashed, unique string (num tied to performance), genSalt returns promise
         const passwordHash = await bcrypt.hash(req.body.password, salt); 
         req.body.password = passwordHash; // override req.body from form (console.log(req.body))
         const newUser = await User.create(req.body);
-        res.status(200).json({currentUser: newUser, isLoggedIn: true,}); //userDoc gets sent to front end and then gets transformed 
+        res.status(200).json({currentUser: newUser, isLoggedIn: true, token}); // * userDoc gets sent to front end and then gets transformed 
+// res.status(200).json({ message: 'hitting auth route' }) - test route    
     } catch (error) {
         res.status(400).json(error);
     }
 });
 
 
-// login - POST - creates a token if credentials match
-// http://localhost:4040/Login
-// SIGN IN
-// POST /auth/login
+// http://localhost:4040/auth/Login - POST - creates a token if when logging in and  credentials match
 router.post("/login", async (req, res, next) => {
     try {
       const loggingUser = req.body.username; //get username
@@ -44,7 +39,7 @@ router.post("/login", async (req, res, next) => {
   });
   
   
-router.get('/profile/:id', async (req,res) => {
+router.get('/:id', async (req,res) => {
     try{
 
     }catch(err){
@@ -60,8 +55,6 @@ router.delete("/:id", async (req, res) => {
         res.status(400).json(error);
     }
 });
-
-
 
 
 // app.use('/profile', userController)

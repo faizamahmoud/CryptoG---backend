@@ -1,23 +1,27 @@
+// todo: Need API data  1. market route  2. trade route  3. user and coins association
+
 const express = require('express')
 const router = express.Router()
 
 const { handleValidateOwnership, requireToken } = require("../middleware/auth"); // ! for create route? 
 const {Coin} = require('../models')
 
-// CRUD, update?
+
 //coins/markets
 // verify frontend route - where to send this data
 // ties user to their purchased coins
 // market route
 router.get("/markets", async (req, res) => {
 	try {
-		res.json(await Coin.find({}).populate("owner").exec()); //modify populate parameters 
+    res.json(await Coin.find({}))
+    
+		// res.json(await Coin.find({}).populate("owner").exec()); //modify populate parameters 
 	} catch (error) {
 		res.status(400).json(error);
 	}
 });
 
-// verify route
+// verify route 
 router.get("/:coinID", async (req, res) => {
     try {
         res.json(await Coin.findById(req.params.id)); 

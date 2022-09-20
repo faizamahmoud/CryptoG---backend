@@ -22,9 +22,10 @@ const userSchema = new mongoose.Schema(
     toJSON: {
         virtuals: true, 
         transform: (_doc, ret) => {
-            delete ret.password //remove the password key from our return document
+            delete ret.password //remove the password key from our return document. prevents password from being sent back to the client
             return ret
-        }
+        },
+        id:false  // makes virtual id invisable
     }
   }
 );
