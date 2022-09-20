@@ -22,7 +22,7 @@ app.use(cors()); //order doesnt matter
 app.use(morgan('dev')); //order doesnt matter 
 app.use(helmet());
 
-app.use('/', coinsController)
+app.use('/coins', coinsController)
 app.use('/auth', userController)
 
  app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
